@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="systemdgen" ng-strict-di>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systed service file generator | MySystemd</title>
+    <meta name="description" content=">A simple Systemd service file online generator. This powerful and intuitive user interface
+            makes us more efficient when we are creating new services file with all possible settings.">
+    <meta name="keywords" content="systemd service file generator, systemd generator, linux service files">
+
+
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet"
+        href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+
+    <style>
+        .preview {
+            position: sticky;
+            top: 0;
+        }
+
+        .preview p {
+            margin: 0;
+            font-family: monospace;
+        }
+
+        .preview .section {
+            margin: 0;
+            font-weight: bold;
+            margin: 10px 0 0 0;
+        }
+
+        footer {
+            margin: 20px 0 20px 0;
+            text-align: center;
+            font-size: smaller;
+            text-transform: uppercase;
+        }
+
+        a {
+            color: cadetblue;
+
+        }
+    </style>
+
+</head>
+
+<body ng-controller="main">
+
+    <div layout="row" style="text-align: center;" layout-wrap>
+        <div flex>
+            <h1 class="md-display-3">My Systemd Generator</h1>
+            <h3 class="md-body-2" style="padding: 5%;">A simple Systemd service file online generator. This powerful and intuitive user
+                interface makes us more efficient when we are creating new services file with all possible settings. You can click on plus button to add
+                more options under correspondent section.<br/> I hope that this tool makes your life more easier, enjoy!</br> Find the code <a href="https://github.com/NunuM/mysystemdgenerator">GitHub</a>
+            </h3>
+        </div>
+    </div>
+
+
+    <div layout="row" layout-xs="column" layout-wrap>
+        <div flex="" layout-padding>
+
+            <!-- UNIT OPTIONS  -->
+            <md-toolbar class="md-toolbar-tools">
+                <h3>Unit Options</h3>
+
+                <span class="flex"></span>
+
+                <md-button class="md-icon-button" aria-label="More">
+                    <md-icon ng-click="showOptionsDialogue($event,'unit', 'unitVisibleItems')" md-svg-icon="plus.svg">
+                    </md-icon>
+                </md-button>
+
+            </md-toolbar>
+
+
+            <d-unit sec="unit" vis="unitVisibleItems"></d-unit>
+
+
+            <!-- SERVICE OPTIONS  -->
+
+            <md-toolbar class="md-toolbar-tools">
+
+                <h3>Service Options</h3>
+
+                <span class="flex"></span>
+
+                <md-button ng-click="showOptionsDialogue($event,'service', 'serviceVisibleItems')"
+                    class="md-icon-button" aria-label="More">
+                    <md-icon md-svg-icon="plus.svg"></md-icon>
+                </md-button>
+
+            </md-toolbar>
+
+            <d-unit sec="service" vis="serviceVisibleItems"></d-unit>
+
+            <!-- INSTALL OPTIONS  -->
+
+            <md-toolbar class="md-toolbar-tools">
+
+                <h3>Install Options</h3>
+
+                <span class="flex"></span>
+
+                <md-button ng-click="showOptionsDialogue($event,'install', 'installVisibleItems')"
+                    class="md-icon-button" aria-label="More">
+                    <md-icon md-svg-icon="plus.svg"></md-icon>
+                </md-button>
+
+            </md-toolbar>
+
+            <d-unit sec="install" vis="installVisibleItems"></d-unit>
+
+        </div>
+
+
+        <div flex="" layout-padding>
+
+
+            <md-toolbar class="md-toolbar-tools">
+                <h3>Systemd service file preview</h3>
+
+                <span class="flex"></span>
+
+                <md-button ng-click="download()" class="md-icon-button" aria-label="Download">
+                    <md-icon md-svg-icon="download.svg"></md-icon>
+                </md-button>
+
+            </md-toolbar>
+
+
+            <d-preview>
+                </preview>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with ❤️ by <a href="https://github.com/NunuM" rel="author" target="__blank">NunuM</a> | Powered by <a
+                href="https://talos.sh">Talos</a></p>
+    </footer>
+
+
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
