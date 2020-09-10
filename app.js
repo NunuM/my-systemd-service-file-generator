@@ -616,6 +616,16 @@ angular.module('systemdgen', ['ngMaterial'])
 
                         }
 
+                    } else if(typeof scope[section][term] === 'boolean') {
+
+                        elementToCompile = angular.element(`
+                        <md-input-container ng-show="${visibleItems}.includes('${term}')" class="md-block">
+                        <md-switch class="md-primary" ng-model="${section}.${term}">
+                          ${term}
+                        </md-switch>
+                        </md-input-container>                        
+                        `);
+
                     }
 
                     if (elementToCompile) {
