@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Systed service file generator | MySystemd</title>
+    <title>Systemd service file generator | MySystemd</title>
     <meta name="description" content=">A simple Systemd service file online generator. This powerful and intuitive user interface
             makes us more efficient when we are creating new services file with all possible settings.">
     <meta name="keywords" content="systemd service file generator, systemd generator, linux service files">
@@ -13,7 +13,7 @@
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet"
-        href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+          href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
 
     <style>
         .preview {
@@ -43,117 +43,129 @@
             color: cadetblue;
 
         }
+
+        ng-messages {
+            color: white !important;
+            padding: 5px 5px 5px 5px;
+        }
+
+        .hint {
+            color: rgb(255, 193, 7);
+        }
+
+
     </style>
 
 </head>
 
 <body ng-controller="main">
 
-    <div layout="row" style="text-align: center;" layout-wrap>
-        <div flex>
-            <h1 class="md-display-3">My Systemd Generator</h1>
-            <h3 class="md-body-2" style="padding: 5%;">A simple Systemd service file online generator. This powerful and intuitive user
-                interface makes us more efficient when we are creating new services file with all possible settings. You can click on plus button to add
-                more options under correspondent section.<br/> I hope that this tool makes your life more easier, enjoy!</br> Find the code <a href="https://github.com/NunuM/my-systemd-service-file-generator">GitHub</a>
-            </h3>
-        </div>
+<div layout="row" style="text-align: center;" layout-wrap>
+    <div flex>
+        <h1 class="md-display-3">My Systemd Generator</h1>
+        <h3 class="md-body-2" style="padding: 5%;">A simple Systemd service file online generator. This powerful and
+            intuitive user
+            interface makes us more efficient when we are creating new services file with all possible settings. You can
+            click on plus button to add
+            more options under correspondent section.<br/> I hope that this tool makes your life more easier,
+            enjoy!</br> Find the code <a href="https://github.com/NunuM/my-systemd-service-file-generator">GitHub</a>
+        </h3>
+    </div>
+</div>
+
+
+<div layout="row" layout-xs="column" layout-wrap>
+    <div flex="" layout-padding>
+
+        <!-- UNIT OPTIONS  -->
+        <md-toolbar class="md-toolbar-tools">
+            <h3>Unit Options</h3>
+
+            <span class="flex"></span>
+
+            <md-button class="md-icon-button" aria-label="More">
+                <md-icon ng-click="showOptionsDialogue($event,'unit', 'unitVisibleItems')" md-svg-icon="plus.svg">
+                </md-icon>
+            </md-button>
+
+        </md-toolbar>
+
+
+        <d-unit sec="unit" vis="unitVisibleItems"></d-unit>
+
+
+        <!-- SERVICE OPTIONS  -->
+
+        <md-toolbar class="md-toolbar-tools">
+
+            <h3>Service Options</h3>
+
+            <span class="flex"></span>
+
+            <md-button ng-click="showOptionsDialogue($event,'service', 'serviceVisibleItems')"
+                       class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="plus.svg"></md-icon>
+            </md-button>
+
+        </md-toolbar>
+
+        <d-unit sec="service" vis="serviceVisibleItems"></d-unit>
+
+        <!-- INSTALL OPTIONS  -->
+
+        <md-toolbar class="md-toolbar-tools">
+
+            <h3>Install Options</h3>
+
+            <span class="flex"></span>
+
+            <md-button ng-click="showOptionsDialogue($event,'install', 'installVisibleItems')"
+                       class="md-icon-button" aria-label="More">
+                <md-icon md-svg-icon="plus.svg"></md-icon>
+            </md-button>
+
+        </md-toolbar>
+
+        <d-unit sec="install" vis="installVisibleItems"></d-unit>
+
     </div>
 
 
-    <div layout="row" layout-xs="column" layout-wrap>
-        <div flex="" layout-padding>
-
-            <!-- UNIT OPTIONS  -->
-            <md-toolbar class="md-toolbar-tools">
-                <h3>Unit Options</h3>
-
-                <span class="flex"></span>
-
-                <md-button class="md-icon-button" aria-label="More">
-                    <md-icon ng-click="showOptionsDialogue($event,'unit', 'unitVisibleItems')" md-svg-icon="plus.svg">
-                    </md-icon>
-                </md-button>
-
-            </md-toolbar>
+    <div flex="" layout-padding>
 
 
-            <d-unit sec="unit" vis="unitVisibleItems"></d-unit>
+        <md-toolbar class="md-toolbar-tools">
+            <h3>Systemd service file preview</h3>
 
+            <span class="flex"></span>
 
-            <!-- SERVICE OPTIONS  -->
+            <md-button ng-click="download()" class="md-icon-button" aria-label="Download">
+                <md-icon md-svg-icon="download.svg"></md-icon>
+            </md-button>
 
-            <md-toolbar class="md-toolbar-tools">
+        </md-toolbar>
 
-                <h3>Service Options</h3>
+        <d-preview></d-preview>
 
-                <span class="flex"></span>
-
-                <md-button ng-click="showOptionsDialogue($event,'service', 'serviceVisibleItems')"
-                    class="md-icon-button" aria-label="More">
-                    <md-icon md-svg-icon="plus.svg"></md-icon>
-                </md-button>
-
-            </md-toolbar>
-
-            <d-unit sec="service" vis="serviceVisibleItems"></d-unit>
-
-            <!-- INSTALL OPTIONS  -->
-
-            <md-toolbar class="md-toolbar-tools">
-
-                <h3>Install Options</h3>
-
-                <span class="flex"></span>
-
-                <md-button ng-click="showOptionsDialogue($event,'install', 'installVisibleItems')"
-                    class="md-icon-button" aria-label="More">
-                    <md-icon md-svg-icon="plus.svg"></md-icon>
-                </md-button>
-
-            </md-toolbar>
-
-            <d-unit sec="install" vis="installVisibleItems"></d-unit>
-
-        </div>
-
-
-        <div flex="" layout-padding>
-
-
-            <md-toolbar class="md-toolbar-tools">
-                <h3>Systemd service file preview</h3>
-
-                <span class="flex"></span>
-
-                <md-button ng-click="download()" class="md-icon-button" aria-label="Download">
-                    <md-icon md-svg-icon="download.svg"></md-icon>
-                </md-button>
-
-            </md-toolbar>
-
-
-            <d-preview>
-                </preview>
-
-        </div>
     </div>
+</div>
 
-    <footer>
-        <p>Made with ❤️ by <a href="https://github.com/NunuM" rel="author" target="__blank">NunuM</a> | Powered by <a
-                href="https://talos.sh">Talos</a></p>
-    </footer>
+<footer>
+    <p>Made with ❤️ by <a href="https://github.com/NunuM" rel="author" target="__blank">NunuM</a> | Powered by <a
+            href="https://talos.sh">Talos</a></p>
+</footer>
 
 
-    <!-- Angular Material requires Angular.js Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-messages.min.js"></script>
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular-messages.min.js"></script>
 
-    <!-- Angular Material Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
+<!-- Angular Material Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
 
-    <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 
 </html>
