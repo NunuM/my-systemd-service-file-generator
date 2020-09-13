@@ -798,7 +798,7 @@ angular.module('systemdgen', ['ngMaterial'])
                     if (section === 'service' && term === 'Environment') {
 
                         elementToCompile = angular.element(`
-                        <div style="padding: 10px; border: 1px dashed grey; margin-bottom: 10px;">
+                        <div ng-show="${visibleItems}.includes('${term}')" style="padding: 10px; border: 1px dashed grey; margin-bottom: 10px;">
 
                         ${term}
             
@@ -844,7 +844,7 @@ angular.module('systemdgen', ['ngMaterial'])
 right: 2px;
 left: auto;
 position: absolute;
-top: 8px;">
+top: 0;">
                                    <md-icon ng-class="{'hint': ${helpVarName}}" md-svg-src="info.svg"></md-icon>
                              </md-button>
                            
@@ -874,7 +874,7 @@ top: 8px;">
 right: 2px;
 left: auto;
 position: absolute;
-top: 8px;">
+top: 0">
                                   <md-icon ng-class="{'hint': ${helpVarName}}" md-svg-src="info.svg"></md-icon>
                              </md-button>
                            
@@ -899,7 +899,7 @@ top: 8px;">
 right: 2px;
 left: auto;
 position: absolute;
-top: 8px;">
+top: 0;">
                                    <md-icon ng-class="{'hint': ${helpVarName}}" md-svg-src="info.svg"></md-icon>
                              </md-button>
                            
@@ -926,7 +926,7 @@ top: 8px;">
 right: 2px;
 left: auto;
 position: absolute;
-top: 8px;">
+top: 0;">
                                    <md-icon ng-class="{'hint': ${helpVarName}}" md-svg-src="info.svg"></md-icon>
                              </md-button>
                            

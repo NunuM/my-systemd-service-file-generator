@@ -34,7 +34,5 @@ for(let term of terms) {
   if(el) { docs[term] = el.nextSibling.innerHTML; last=el } else { docs[term] = last.nextSibling.innerHTML; }
 }
 
-// Check if we do not miss anyone
-Object.keys(docs).length === terms.length
 
 ````
