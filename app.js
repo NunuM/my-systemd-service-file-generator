@@ -728,7 +728,12 @@ angular.module('systemdgen', ['ngMaterial'])
                         name += ".service";
                     }
 
-                    createFile(name, document.getElementById("preview").innerText);
+                    const serviceFile = document
+                        .getElementById("preview")
+                        .innerText
+                        .replace(/^\n+(?!\[)/gm, "");
+
+                    createFile(name, serviceFile);
 
                 }, function () {
                     //Ignore
@@ -756,22 +761,22 @@ angular.module('systemdgen', ['ngMaterial'])
             replace: true,
             link: function (scope, iElement, iAttrs) {
 
-                let elementToCompile = '<div id="preview" class="preview"><p class="section">[Unit]<p/>';
+                let elementToCompile = '<div id="preview" class="preview"><span class="section">[Unit]</br></span>';
 
                 Object.keys(scope.unit).forEach((term) => {
-                    elementToCompile += `<p ng-show="unitVisibleItems.includes('${term}')">{{ unitVisibleItems.includes('${term}') ? '${term}=' + (unit.${term}.constructor.name === 'Array' ? unit.${term}.join(' ') : unit.${term} ) : '' }} </p>`;
+                    elementToCompile += `<span ng-show="unitVisibleItems.includes('${term}')">{{ unitVisibleItems.includes('${term}') ? '${term}=' + (unit.${term}.constructor.name === 'Array' ? unit.${term}.join(' ') : unit.${term} ) : '' }} </br></span>`;
                 });
 
-                elementToCompile += '<p class="section">[Service]</p>'
+                elementToCompile += '</br><span class="section">[Service]</span></br>'
 
                 Object.keys(scope.service).forEach((term) => {
-                    elementToCompile += `<p ng-show="serviceVisibleItems.includes('${term}')">{{ serviceVisibleItems.includes('${term}') ? '${term}=' + (service.${term}.constructor.name === 'Array' ? service.${term}.join(' ') : service.${term} ) : '' }} </p>`;
+                    elementToCompile += `<span ng-show="serviceVisibleItems.includes('${term}')">{{ serviceVisibleItems.includes('${term}') ? '${term}=' + (service.${term}.constructor.name === 'Array' ? service.${term}.join(' ') : service.${term} ) : '' }} </br></span>`;
                 });
 
-                elementToCompile += '<p class="section">[Install]</p>'
+                elementToCompile += '</br><span class="section">[Install]</span></br>'
 
                 Object.keys(scope.install).forEach((term) => {
-                    elementToCompile += `<p ng-show="installVisibleItems.includes('${term}')"> {{ installVisibleItems.includes('${term}') ? '${term}=' + (install.${term}.constructor.name === 'Array' ? install.${term}.join(' ') : install.${term} ) : '' }} </p>`;
+                    elementToCompile += `<span ng-show="installVisibleItems.includes('${term}')"> {{ installVisibleItems.includes('${term}') ? '${term}=' + (install.${term}.constructor.name === 'Array' ? install.${term}.join(' ') : install.${term} ) : '' }} </br></span>`;
                 });
 
                 elementToCompile += '</div>'
