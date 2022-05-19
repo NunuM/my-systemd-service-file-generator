@@ -9,7 +9,6 @@
             makes us more efficient when we are creating new services file with all possible settings.">
     <meta name="keywords" content="systemd service file generator, systemd generator, linux service files">
 
-
     <!-- Angular Material style sheet -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
     <link rel="stylesheet"
@@ -65,8 +64,8 @@
 
 <body ng-controller="main">
 
-<div layout="row"  layout-wrap layout-padding>
-    <div flex>
+<div layout="row" layout-xs="column" layout-wrap layout-padding>
+    <div flex="">
         <h1 class="md-display-3" style="text-align: center;">My Systemd Generator</h1>
         <p class="md-body-2">A simple Systemd service file online generator. This powerful and
             intuitive user
@@ -79,8 +78,8 @@
             Find the code <a href="https://github.com/NunuM/my-systemd-service-file-generator">GitHub</a>
         </p>
     </div>
-    <div flex>
-        <pre><code class="language-bash" style="height: 100%;">
+    <div flex="" style="width: 100%;">
+        <pre style="overflow: auto;"><code class="language-bash">
 #How to install
 sudo cp -v mysystemdservice.service /etc/systemd/system #copy service file
 sudo systemctl enable mysystemdservice.service          #enable service
@@ -127,7 +126,7 @@ sudo systemctl daemon-reload
 
             <md-button ng-click="showOptionsDialogue($event,'service', 'serviceVisibleItems')"
                        class="md-icon-button" aria-label="More">
-                <md-icon md-svg-icon="plus.svg"></md-icon>
+                <md-icon md-svg-icon="/plus.svg"></md-icon>
             </md-button>
 
         </md-toolbar>
@@ -144,7 +143,7 @@ sudo systemctl daemon-reload
 
             <md-button ng-click="showOptionsDialogue($event,'install', 'installVisibleItems')"
                        class="md-icon-button" aria-label="More">
-                <md-icon md-svg-icon="plus.svg"></md-icon>
+                <md-icon md-svg-icon="/plus.svg"></md-icon>
             </md-button>
 
         </md-toolbar>
@@ -152,8 +151,6 @@ sudo systemctl daemon-reload
         <d-unit sec="install" vis="installVisibleItems"></d-unit>
 
     </div>
-
-
     <div flex="" layout-padding>
         <md-toolbar class="md-toolbar-tools">
             <h3>Systemd service file preview</h3>
@@ -161,7 +158,7 @@ sudo systemctl daemon-reload
             <span class="flex"></span>
 
             <md-button ng-click="download()" class="md-icon-button" aria-label="Download">
-                <md-icon md-svg-icon="download.svg"></md-icon>
+                <md-icon md-svg-icon="/download.svg"></md-icon>
             </md-button>
 
         </md-toolbar>
